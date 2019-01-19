@@ -56,3 +56,4 @@ tmp/
 *.env.js
 config/*.env.json
 dist
+.idea
