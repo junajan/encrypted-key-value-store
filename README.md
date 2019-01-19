@@ -35,7 +35,7 @@ Set up mandatory environment variables:
  - `DATABASE_PASSWORD` - PostgreSQL database password
  - `DATABASE_NAME` - PostgreSQL database name
 
-And run service inside of a docker container:
+And run service inside a docker container:
 ```bash
 # run service on port 3000
 docker-compose up -d
