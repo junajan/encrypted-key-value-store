@@ -1,0 +1,50 @@
+{
+  "name": "encrypted-key-value-store",
+  "version": "1.0.0",
+  "description": "Service for accessing key value store with encryption feature",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "build-watch": "babel --watch src -d dist",
+    "start": "node bin/server",
+    "start-dev": "LOG_LEVEL=debug NODE_ENV=dev bin/server",
+    "start-dev-watch": "nodemon -x 'npm run start-dev'",
+    "lint": "./node_modules/.bin/eslint src spec",
+    "lint-watch": "./node_modules/.bin/nodemon --exec 'npm run lint'",
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --compilers js:@babel/register --recursive spec/**/*.spec.js",
+    "test-watch": "./node_modules/.bin/nodemon --exec 'npm run test'",
+    "coverage": "mkdir -p .nyc_output && ./node_modules/.bin/nyc --reporter=text --reporter=html npm test"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "author": "Jan Juna <mail@janjuna.cz>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "babel-plugin-istanbul": "^5.1.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "eslint": "^5.12.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9",
+    "nyc": "^13.1.0",
+    "sinon": "^7.2.2"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "body-parser": "^1.18.3",
+    "crypto-promise": "^2.1.0",
+    "express": "^4.16.4",
+    "express-validation": "^1.0.2",
+    "joi": "^14.3.1",
+    "lodash": "^4.17.11",
+    "log4js": "^3.0.6",
+    "pg-promise": "^8.5.5",
+    "require-dir": "^1.2.0"
+  }
+}

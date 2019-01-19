@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+const config = require('../dist/config').default;
+const App = require('../dist/app').default;
+
+/**
+ * Start the server
+ */
+(new App(config)).start()
