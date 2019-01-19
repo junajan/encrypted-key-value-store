@@ -1,6 +1,6 @@
 import _ from 'lodash';
-// use some other library which offers also a connection pool?
 import pgPromise from 'pg-promise';
+// use some other library which offers also a connection pool?
 
 
 export default class PostgresClient {

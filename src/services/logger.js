@@ -10,4 +10,3 @@ export default function (config) {
   logger.expressMiddleware = log4js.connectLogger(logger);
   return logger;
 }
-

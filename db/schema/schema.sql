@@ -8,5 +8,4 @@ CREATE TABLE IF NOT EXISTS store
 );
 
 -- should we add also an encryption algorithm used for encrypting the value?
-
 CREATE UNIQUE INDEX key_index ON store (key);

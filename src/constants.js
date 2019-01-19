@@ -10,3 +10,4 @@ export const ENV_VARIABLES_MAP  = {
 };
 
 export const SALT_LENGTH = 10;
+export const ENCRYPTION_ALGORITHM = 'aes256';

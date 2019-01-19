@@ -1,4 +1,5 @@
-const crypto = require('crypto-promise');
+import crypto from 'crypto-promise';
+import * as constants from '../constants';
 
 export async function randomString (len = 16) {
   const buffer = await crypto.randomBytes(len);
@@ -6,16 +7,13 @@ export async function randomString (len = 16) {
 }
 
 export async function encrypt (secret, value, salt = '') {
-  const buffer = await crypto.cipher('aes256', secret)(`${value}${salt}`);
+  const buffer = await crypto.cipher(constants.ENCRYPTION_ALGORITHM, secret)(`${value}${salt}`);
   return buffer.toString('Base64');
 }
 
 export async function decrypt (secret, encryptedValue, salt = '') {
   const buffer = Buffer.from(encryptedValue, 'Base64');
-  const res = await crypto.decipher('aes256', secret)(buffer, 'hex');
-  const decrypted = res.toString();
+  const decrypted = await crypto.decipher(constants.ENCRYPTION_ALGORITHM, secret)(buffer, 'hex');
 
-  return salt.length
-    ? decrypted.slice(0, -salt.length)
-    : decrypted;
+  return decrypted.toString().slice(0, -salt.length);
 }

@@ -4,6 +4,7 @@ import requireDir from 'require-dir';
 import bodyParser from 'body-parser';
 import apiRoutes from './routes';
 import util from 'util';
+import helmet from 'helmet';
 
 util.inspect.defaultOptions.depth = null;
 
@@ -36,6 +37,7 @@ export default function ApiFactory (config, logger) {
   const api = express();
 
   // Register API middlewares
+  api.use(helmet())
   api.use(bodyParser.json({ type: 'application/json'}));
   api.use(logger.expressMiddleware);
 
@@ -50,6 +52,7 @@ export default function ApiFactory (config, logger) {
   // Register API routes
   connectRoutes(api, apiRoutes, logger);
 
+  // Custom error handler
   // eslint-disable-next-line no-unused-vars
   api.use((error, req, res, next) => {
     logger.error('Error while processing request:', {

@@ -16,6 +16,10 @@ export default class App {
     this.server.on('listening', this._onListening.bind(this));
   }
 
+  start () {
+    this.server.listen(this.api.get('port'));
+  }
+
   /**
    * Event listener for HTTP server "error" event.
    */
@@ -53,9 +57,5 @@ export default class App {
       ? 'pipe ' + addr
       : 'port ' + addr.port;
     this.logger.info('Listening on %s', bind);
-  }
-
-  start () {
-    this.server.listen(this.api.get('port'));
   }
 }
