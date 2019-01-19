@@ -10,7 +10,7 @@ Here are common endpoints provided by the service
 And here are service related endpoints:
  - `GET /store/:id` - get stored value based on provided `:id`
     - Id has to be a string and can contain a wildcard character `*` (example: `key-*`)
-    - While sending a GET request, there has to be provided also `encryption-key`.
+    - While sending a GET request, there has to be provided also `encryption-key` header.
  
  - `POST /store/:id` - save value identified by `:id`
     - Id has to be a string.
@@ -41,5 +41,29 @@ And run service inside a docker container:
 docker-compose up -d
 ```
 
+## Testing
+For running integration tests, create a `./config/test.env.json` file with following configuration:
+```json
+{
+  "port": 3000,
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "postgres",
+    "user": "postgres",
+    "password": "password"
+  }
+}
+```
 
+Run testing postgresql database and start tests:
+```bash
+# run db
+docker-compose -f db/docker-compose.testdb.yaml up -d
 
+# run tests
+npm test 
+
+# test coverage
+npm run coverage 
+```
