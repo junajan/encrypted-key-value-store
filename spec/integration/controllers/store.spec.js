@@ -13,14 +13,14 @@ describe('Store controller', () => {
   const server = ApiFactory(config, logger);
 
   after(async () => {
-    const { pg } = server.get('services')
+    const { pg } = server.get('services');
     pg.end();
-  })
+  });
 
   it('should GET an error when encryption key is not provided', async () => {
     const res = await chai.request(server)
       .get('/store/id')
-      .type("json")
+      .type('json');
 
     expect(res.body).to.deep.equal({
       status: 400,
@@ -31,16 +31,16 @@ describe('Store controller', () => {
         messages: ['"encryption-key" is required'],
         types: ['any.required']
       }]
-    })
+    });
   });
 
   it('should GET an empty array when decrypting unknown key', async () => {
     const res = await chai.request(server)
       .get('/store/unknown-key')
       .set('encryption-key', 'secretKey')
-      .type('json')
+      .type('json');
 
-    expect(res.body).to.deep.equal([])
+    expect(res.body).to.deep.equal([]);
   });
 
   it('should POST a new key-value', async () => {
@@ -62,7 +62,7 @@ describe('Store controller', () => {
   });
 
   it('should set and get multiple items', async () => {
-    const encryptionKey = 'secretKey'
+    const encryptionKey = 'secretKey';
     const values = [
       {
         id: 123,
@@ -93,13 +93,13 @@ describe('Store controller', () => {
       {
         id: 'key-1'
       }
-    ])
+    ]);
 
     const fetchRes = await chai.request(server)
-      .get(`/store/key-*`)
+      .get('/store/key-*')
       .set('encryption-key', encryptionKey)
       .type('json');
 
-    expect(_.sortBy(fetchRes.body, 'id')).to.deep.equal(values)
+    expect(_.sortBy(fetchRes.body, 'id')).to.deep.equal(values);
   });
 });

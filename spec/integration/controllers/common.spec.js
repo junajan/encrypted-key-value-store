@@ -9,30 +9,30 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('Common routes', () => {
-	let server;
+  let server;
 
-	before(() => {
-		server = ApiFactory(config, logger);
-	});
+  before(() => {
+    server = ApiFactory(config, logger);
+  });
 
-	it('it should GET /', async () => {
-		const res = await chai.request(server)
-			.get('/');
+  it('it should GET /', async () => {
+    const res = await chai.request(server)
+      .get('/');
 
-		expect(res.text).to.equal(name);
-	});
+    expect(res.text).to.equal(name);
+  });
 
-	it('it should GET /version', async () => {
-		const res = await chai.request(server)
-			.get('/version');
+  it('it should GET /version', async () => {
+    const res = await chai.request(server)
+      .get('/version');
 
-		expect(res.text).to.equal(version);
-	});
+    expect(res.text).to.equal(version);
+  });
 
-	it('it should GET /ping', async () => {
-		const res = await chai.request(server)
-			.get('/ping');
+  it('it should GET /ping', async () => {
+    const res = await chai.request(server)
+      .get('/ping');
 
-		expect(res.text).to.equal('pong');
-	});
+    expect(res.text).to.equal('pong');
+  });
 });

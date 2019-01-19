@@ -5,6 +5,6 @@ import store from './store';
  * Combine all routers
  */
 export default {
-	common,
-	store,
+  common,
+  store,
 };

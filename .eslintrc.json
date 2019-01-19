@@ -16,10 +16,7 @@
         "no-console": 0,
         "no-only-tests/no-only-tests": 2,
         "max-len": [2, 100],
-        "indent": [
-            "error",
-            "tab"
-        ],
+        "indent": ["error", 2],
         "linebreak-style": [
             "error",
             "unix"
