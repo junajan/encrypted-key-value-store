@@ -1,10 +1,10 @@
 import _ from 'lodash';
+import util from 'util';
+import helmet from 'helmet';
 import express from 'express';
 import requireDir from 'require-dir';
 import bodyParser from 'body-parser';
 import apiRoutes from './routes';
-import util from 'util';
-import helmet from 'helmet';
 
 util.inspect.defaultOptions.depth = null;
 
