@@ -6,8 +6,6 @@ import requireDir from 'require-dir';
 import bodyParser from 'body-parser';
 import apiRoutes from './routes';
 
-util.inspect.defaultOptions.depth = null;
-
 function connectServices (config, logger) {
   // require all services from services dir
   const serviceModules = requireDir('./services');
